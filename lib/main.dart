@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as path;
 import 'package:flutter_contacts/flutter_contacts.dart';
 
 void main() => runApp(SarathiApp());
@@ -16,8 +16,8 @@ class DBHelper {
   static Database? _db;
   static Future<Database> getDB() async {
     if(_db!=null) return _db!;
-    String p = join(await getDatabasesPath(), 'sarathi.db');
-    _db = await openDatabase(p, version:1, onCreate:(db,v) async{
+    String dbPath = path.join(await getDatabasesPath(), 'sarathi.db');
+    _db = await openDatabase(dbPath, version:1, onCreate:(db,v) async{
       await db.execute('CREATE TABLE bills(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, product TEXT, qty REAL, price REAL, total REAL, date TEXT)');
       await db.execute('CREATE TABLE khata(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, amount REAL, type TEXT, date TEXT)');
       await db.execute('CREATE TABLE expenses(id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT, amount REAL, note TEXT, date TEXT)');
