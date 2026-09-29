@@ -1,0 +1,15 @@
+name: sarathi_agri_app
+description: Sarathi Agri Products - Silage App
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  flutter_contacts: ^1.1.7+1
+  cupertino_icons: ^1.0.2
+flutter:
+  uses-material-design: true
